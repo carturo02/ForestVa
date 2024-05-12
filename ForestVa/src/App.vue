@@ -1,18 +1,20 @@
 <script setup lang="ts">
-import NavBar from './NavBar.vue'
-import SideBarVue from './SideBarVue.vue'
-</script>
+import LoginVue from './components/LoginVue.vue';
 
+/*
+import SideBarVue from './SideBarVue.vue';
+import NavBar from './NavBar.vue';*/ 
+</script>
 <template>
-    <NavBar class="item"/>
-    <SideBarVue class="item"/>    
+  <!--<NavBar></NavBar>
+  <SideBarVue></SideBarVue>-->
+  <LoginVue></LoginVue>
 </template>
 
-<style scoped>
+<style>
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 </style>

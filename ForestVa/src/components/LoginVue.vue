@@ -7,7 +7,7 @@
                     <input type="text" class="form__input" placeholder=" ">
                     <label for="" class="form__label">Username</label>
                 </div>
-
+                <span></span>
                 <div class="form__div">
                     <input type="password" class="form__input" placeholder=" ">
                     <label for="" class="form__label">Password</label>
