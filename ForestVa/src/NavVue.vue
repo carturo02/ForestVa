@@ -11,9 +11,6 @@
 	        </div><!-- slim-header-left -->
 	        <div class="slim-header-right">
 	          <div class="dropdown dropdown-a">
-	            <a href="" class="header-notification" data-toggle="dropdown">
-	              <i class="icon ion-ios-bolt-outline"></i>
-	            </a>
 	            <div class="dropdown-menu">
 	              <div class="dropdown-menu-header">
 	                <h6 class="dropdown-menu-title">Activity Logs</h6>
@@ -67,10 +64,6 @@
 	            </div><!-- dropdown-menu-right -->
 	          </div><!-- dropdown -->
 	          <div class="dropdown dropdown-b">
-	            <a href="" class="header-notification" data-toggle="dropdown">
-	              <i class="icon ion-ios-bell-outline"></i>
-	              <span class="indicator"></span>
-	            </a>
 	            <div class="dropdown-menu">
 	              <div class="dropdown-menu-header">
 	                <h6 class="dropdown-menu-title">Notifications</h6>
@@ -130,17 +123,23 @@
 	              <span>Katherine</span>
 	              <i class="fa fa-angle-down"></i>
 	            </a>
-	            <div class="dropdown-menu dropdown-menu-right">
-	              <nav class="nav">
-	                <a href="page-profile.html" class="nav-link"><i class="icon ion-person"></i> View Profile</a>
-	                <a href="page-edit-profile.html" class="nav-link"><i class="icon ion-compose"></i> Edit Profile</a>
-	                <a href="page-activity.html" class="nav-link"><i class="icon ion-ios-bolt"></i> Activity Log</a>
-	                <a href="page-settings.html" class="nav-link"><i class="icon ion-ios-gear"></i> Account Settings</a>
-	                <a href="page-signin.html" class="nav-link"><i class="icon ion-forward"></i> Sign Out</a>
-	              </nav>
-	            </div><!-- dropdown-menu -->
+				<div class="dropdown-menu dropdown-menu-right">
+    <nav class="nav">
+      <a @click="openModal('profileModal')"><i class="icon ion-person"></i> Ver Perfil</a>
+      <a @click="openModal('editProfileModal')"><i class="icon ion-compose"></i> Editar Perfil</a>
+      <a @click="openModal('activityLogModal')"><i class="icon ion-ios-bolt"></i> Registro de Actividad</a>
+      <a @click="openModal('accountSettingsModal')"><i class="icon ion-ios-gear"></i> Configuración de la Cuenta</a>
+      <a @click="openModal('signOutModal')"><i class="icon ion-forward"></i> Cerrar Sesión</a>
+    </nav>
+  </div>
+ 
+
 	          </div><!-- dropdown -->
 	        </div><!-- header-right -->
 	      </div><!-- container -->
 	    </div>
 </template>
+
+<script setup>
+
+</script>
