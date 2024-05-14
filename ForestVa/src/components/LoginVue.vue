@@ -1,25 +1,56 @@
 <template>
     <div class="l-form">
-            <form action="" class="form">
-                <h1 class="form__title">Welcome to ForestVa</h1>
+            <form @submit.prevent="submitForm" class="form">
+                <h1 class="form__title" style="color: green">Sign-in ForestVa</h1>
 
                 <div class="form__div">
-                    <input type="text" class="form__input" placeholder=" ">
-                    <label for="" class="form__label">Username</label>
+                    <input v-model="username" class="form__input" placeholder=" ">
+                    <label for="" class="form__label" style="background-color: transparent;">Username</label>
                 </div>
-                <span></span>
                 <div class="form__div">
-                    <input type="password" class="form__input" placeholder=" ">
-                    <label for="" class="form__label">Password</label>
+                    <input v-model="password" class="form__input" placeholder=" ">
+                    <label for="" class="form__label" style="background-color: transparent;">Password</label>
                 </div>
-
+                <p class="error" v-if="errorMessage">{{ errorMessage }}</p>
                 <input type="submit" class="form__button" value="Sign In">
+                
             </form>
         </div>
 
 </template>
 
+<script setup>
+import axios from 'axios';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+const username = ref('');
+const password = ref('');
+const errorMessage = ref('');
+
+async function submitForm() {
+    try {
+        const response = await axios.post('http://localhost:3000/api/Users/login', {
+            username: username.value,
+            password: password.value
+        });
+
+        console.log('Usuario conectado', response.data);
+
+        router.push('/app');
+    } catch (error) {
+      console.error('Error al conectar el usuario', error);
+      errorMessage.value = error.response.data.message;
+    }
+}
+</script>
+
+
+
 <style scoped>
+.error {
+  color: red;}
 /*===== BASE =====*/
 *, ::before, ::after {
   box-sizing: border-box;
@@ -97,7 +128,7 @@ h1 {
 
 /*Input focus move up label*/
 .form__input:focus + .form__label {
-  top: -0.5rem;
+  top: -1rem;
   left: 0.8rem;
   color: green;
   font-size: var(--small-font-size);
@@ -119,3 +150,4 @@ h1 {
   border: 2px solid green;
 }
 </style>
+

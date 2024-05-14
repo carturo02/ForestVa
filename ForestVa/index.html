@@ -1,66 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vite App</title>
- <!-- Bootstrap Core CSS -->
- <link href="./src/assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
- <!-- Menu CSS -->
- <link href="./src/assets/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
- <!-- toast CSS -->
- <link href="./src/assets/plugins/bower_components/toast-master/css/jquery.toast.css" rel="stylesheet">
- <!-- morris CSS -->
- <link href="./src/assets/plugins/bower_components/morrisjs/morris.css" rel="stylesheet">
- <!-- chartist CSS -->
- <link href="./src/assets/plugins/bower_components/chartist-js/dist/chartist.min.css" rel="stylesheet">
- <link href="./src/assets/plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
- <!-- Calendar CSS -->
- <link href="./src/assets/plugins/bower_components/calendar/dist/fullcalendar.css" rel="stylesheet">
- <!-- animation CSS -->
- <link href="./src/assets/css/animate.css" rel="stylesheet">
- <!-- Custom CSS -->
- <link href="./src/assets/css/style.css" rel="stylesheet">
- <!-- color CSS -->
- <link href="./src/assets/css/colors/default.css" id="theme" rel="stylesheet">
- <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
- <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
- <!--[if lt IE 9]>
- <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
- <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-<style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style>
+    <title>ForestVa</title>
 
-<script src="./src/assets/plugins/bower_components/jquery/dist/jquery.min.js"></script>
-  <!-- Bootstrap Core JavaScript -->
-  <script src="./src/assets/bootstrap/dist/js/bootstrap.min.js"></script>
-  <!-- Menu Plugin JavaScript -->
-  <script src="./src/assets/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
-  <!--slimscroll JavaScript -->
-  <script src="./src/assets/js/jquery.slimscroll.js"></script>
-  <!--Wave Effects -->
-  <script src="./src/assets/js/waves.js"></script>
-  <!--Counter js -->
-  <script src="./src/assets/plugins/bower_components/waypoints/lib/jquery.waypoints.js"></script>
-  <script src="./src/assets/plugins/bower_components/counterup/jquery.counterup.min.js"></script>
-  
-  <!-- chartist chart -->
-  <script src="./src/assets/plugins/bower_components/chartist-js/dist/chartist.min.js"></script>
-  <script src="./src/assets/plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
-  <!-- Sparkline chart JavaScript -->
-  <script src="./src/assets/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
-  
-  <!-- Custom Theme JavaScript -->
-  <script src="./src/assets/js/custom.min.js"></script>
-  <script src="./src/assets/js/dashboard1.js"></script>
-  
-  <script src="./src/assets/plugins/bower_components/toast-master/js/jquery.toast.js"></script>
-  <!--Style Switcher -->
-  <script src="./src/assets/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+ <!-- vendor css -->
+ <link href="/src/assets/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+ <link href="/src/assets/lib/Ionicons/css/ionicons.css" rel="stylesheet">
+ <link href="/src/assets/lib/chartist/css/chartist.css" rel="stylesheet">
+ <link href="/src/assets/lib/rickshaw/css/rickshaw.min.css" rel="stylesheet">
 
+ <!-- Slim CSS -->
+ <link rel="stylesheet" href="/src/assets/css/slim.css">
 
-  </head>
+<style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style><link id="headerSkin" rel="stylesheet" href="">
+
+<script src="/src/assets/lib/jquery/js/jquery.js"></script>
+<script src="/src/assets/lib/popper.js/js/popper.js"></script>
+<script src="/src/assets/lib/bootstrap/js/bootstrap.js"></script>
+<script src="/src/assets/lib/jquery.cookie/js/jquery.cookie.js"></script>
+<script src="/src/assets/lib/chartist/js/chartist.js"></script>
+<script src="/src/assets/lib/d3/js/d3.js"></script>
+<script src="/src/assets/lib/rickshaw/js/rickshaw.min.js"></script>
+<script src="/src/assets/lib/jquery.sparkline.bower/js/jquery.sparkline.min.js"></script>
+<script src="/src/assets/js/ResizeSensor.js"></script>
+<script src="/src/assets/js/dashboard.js"></script>
+<script src="/src/assets/js/slim.js"></script>
+</head>
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
