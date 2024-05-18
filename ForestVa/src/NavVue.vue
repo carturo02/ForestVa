@@ -120,7 +120,7 @@
 	          <div class="dropdown dropdown-c">
 	            <a href="#" class="logged-user" data-toggle="dropdown">
 	              <img src="http://via.placeholder.com/500x500" alt="">
-	              <span>Katherine</span>
+	              <span>{{  }}</span>
 	              <i class="fa fa-angle-down"></i>
 	            </a>
 				<div class="dropdown-menu dropdown-menu-right">
