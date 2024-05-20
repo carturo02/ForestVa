@@ -2,14 +2,30 @@
 <template>
     <div class="card">
         <DataTable :value="plant" stripedRows tableStyle="min-width: 70rem">
-            <Column field="structure" header="Structure" ></Column>
-            <Column field="specie" header="Specie"></Column>
-            <Column field="height" header="Height"></Column>
-            <Column field="shaft_height" header="Shaft Height"></Column>
-            <Column field="minx" header="Minimum X"></Column>
-            <Column field="maxx" header="Maximum X"></Column>
-            <Column field="miny" header="Minimum Y"></Column>
-            <Column field="minx" header="Maximum Y"></Column>
+            <Column field="structure" header="STRUCTURE" ></Column>
+            <Column field="specie" header="SPECIE"></Column>
+            <Column field="height" header="HEIGHT"></Column>
+            <Column field="shaft_height" header="SHAFT HEIGHT"></Column>
+            <Column field="minx" header="MINIMUM X"></Column>
+            <Column field="maxx" header="MAXIMUM X"></Column>
+            <Column field="miny" header="MINIMUM Y"></Column>
+            <Column field="minx" header="MAXIMUM Y"></Column>
+            <Column header="">
+                <template #header>
+                    <Button class="btn-create" @click="create">
+                        CREATE PLANT
+                        <i class="icon ion-plus"></i>
+                    </Button>
+                </template>
+                <template #body="slotProps">
+                    <Button class="btn" @click="edit(slotProps.data)">
+                        <i class="icon ion-edit"></i>
+                    </Button>
+                    <Button class="btn" @click="delet(slotProps.data)">
+                        <i class="icon ion-close"></i>
+                    </Button>
+                </template>
+            </Column>
         </DataTable>
     </div>
 </template>
@@ -42,6 +58,21 @@ console.log(plant.value)
 }
 
 loadplants();
+
+function create() {
+   
+    console.log('Crear');
+}
+
+function edit(data) {
+   
+    console.log('Editar', data);
+}
+
+function delet(data) {
+ 
+    console.log('Eliminar', data);
+}
 </script>
 
 <style scoped>
@@ -50,4 +81,23 @@ loadplants();
     overflow: auto;
 }
 
+.btn-create{
+    color: white;
+    background-color: #10f440;
+    align-items: center;
+    font-weight: bold;
+    height: 30px;
+    border-radius: 0.5rem;
+    border-color: #10f440;
+}
+.btn{
+    margin-left: 0.5rem;
+    color: white;
+    background-color: #10f440;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}
 </style>
