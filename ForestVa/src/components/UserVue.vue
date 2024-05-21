@@ -1,6 +1,7 @@
 <template>
   <NavVue />
   <NavBarVue />
+  <router-view/>
 </template>
   
 <script setup>
