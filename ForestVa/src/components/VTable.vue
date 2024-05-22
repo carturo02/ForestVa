@@ -1,30 +1,35 @@
 <script setup>
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
-import ColumnGroup from 'primevue/columngroup';   // optional
-import Row from 'primevue/row';                   // optional
 import Button from 'primevue/button'
-import { ref } from 'vue'
 import axios from 'axios';
 import useEvents from '@/common/utils/useEvents';
-import LoginVue from './LoginVue.vue'
 import { defineModel } from 'vue';
+import { ref } from 'vue';
+import { VueElement } from 'vue';
 
 const props = defineProps({
     url: String,
     cb: Function,
+    form: {
+        type: {
+            component: VueElement,
+            header: String
+        }
+    }
 });
 
 const elements = defineModel();
+const editingRows = ref(false);
 
 (async ()=>{
-    const response = await axios.get(props.url);
+    const response = await axios.get(`http://localhost:3000/api/${props.url}`);
     
     props.cb(response.data);
 })()
 
 function create() {
-    useEvents().dispatch('showDialog', LoginVue);
+    useEvents().dispatch('showDialog', props.form);
     console.log('Crear');
 }
 
@@ -41,20 +46,27 @@ function delet(data) {
 
 <template>
     <div class="card">
-        <DataTable :value="elements" stripedRows tableStyle="min-width: 70rem">
-            <slot></slot>
-            <Column header="">
+        <DataTable 
+        v-model:editingRows="editingRows"
+        editMode="row"
+        :value="elements"
+        stripedRows 
+        tableStyle="min-width: 70rem"
+        dataKey="id"
+        >
+            <Column>
                 <template #header>
-                    <Button class="btn-create" @click="create">
+                    <Button class="btn" @click="create">
                         CREATE NEW 
                         <i class="icon ion-plus"></i>
                     </Button>
                 </template>
+            </Column>
+            <slot></slot>
+            <Column :rowEditor="true"></Column>
+            <Column header="">
                 <template #body="slotProps">
-                    <Button class="btn" @click="edit(slotProps.data)">
-                        <i class="icon ion-edit"></i>
-                    </Button>
-                    <Button class="btn" @click="delet(slotProps.data)">
+                    <Button severity="danger" class="btn" @click="delet(slotProps.data)">
                         <i class="icon ion-close"></i>
                     </Button>
                 </template>
@@ -69,23 +81,7 @@ function delet(data) {
     overflow: auto;
 }
 
-.btn-create{
-    color: white;
-    background-color: #10f440;
-    align-items: center;
-    font-weight: bold;
-    height: 30px;
-    border-radius: 0.5rem;
-    border-color: #10f440;
-}
 .btn{
-    margin-left: 0.5rem;
-    color: white;
-    background-color: #10f440;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    align-items: center;
-    justify-content: center;
+    border-radius: 10px;
 }
 </style>

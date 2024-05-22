@@ -5,8 +5,8 @@ import GroundTableVue from '../views/GroundTableVue.vue';
 //import ParcelTableVue from '../views/ParcelTableVue.vue';
 import PolygonalTableVue from '../views/PolygonalTableVue.vue';
 import PlantTableVue from '../views/PlantTableVue.vue';
-import ObserverTable from '@/modules/user/views/ObserverTable.vue';
-import AdminTableVue from '@/modules/user/views/AdminTableVue.vue';
+import ObserverTable from '@/modules/user/views/tables/ObserverTable.vue';
+import AdminTableVue from '@/modules/user/views/tables/AdminTableVue.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
