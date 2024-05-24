@@ -7,6 +7,7 @@ import useEvents from '@/common/utils/useEvents';
 import { defineModel } from 'vue';
 import { ref } from 'vue';
 import { VueElement } from 'vue';
+import { useSendRequest } from '@/common/utils/useSendRequest';
 
 const props = defineProps({
     url: String,
@@ -16,7 +17,8 @@ const props = defineProps({
             component: VueElement,
             header: String
         }
-    }
+    },
+    dataKey: String
 });
 
 const elements = defineModel();
@@ -33,9 +35,13 @@ function create() {
     console.log('Crear');
 }
 
-function edit(data) {
-   
-    console.log('Editar', data);
+function edit(event) {
+    useSendRequest({
+        url: `${props.url}/${event.data[props.dataKey]}`,
+        method: 'PATCH',
+        data: event.newData.value
+    })
+    console.log(event);
 }
 
 function delet(data) {
@@ -52,7 +58,8 @@ function delet(data) {
         :value="elements"
         stripedRows 
         tableStyle="min-width: 70rem"
-        dataKey="id"
+        :dataKey="props.dataKey"
+        @row-edit-save="edit"
         >
             <Column>
                 <template #header>

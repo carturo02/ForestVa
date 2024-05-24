@@ -8,7 +8,7 @@
                     <label for="" class="form__label" style="background-color: transparent;">Username</label>
                 </div>
                 <div class="form__div">
-                    <input v-model="password" class="form__input" placeholder=" ">
+                    <input type="password" v-model="password" class="form__input" placeholder=" ">
                     <label for="" class="form__label" style="background-color: transparent;">Password</label>
                 </div>
                 <p class="error" v-if="errorMessage">{{ errorMessage }}</p>
@@ -23,6 +23,7 @@
 import axios from 'axios';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { loadSession } from '../common/site/useUser.ts';
 
 const router = useRouter();
 const username = ref('');
@@ -36,8 +37,8 @@ async function submitForm() {
             password: password.value
         });
 
-        console.log('Usuario conectado', response.data);
-
+        sessionStorage.setItem('jwt', response.data.jwt);
+        loadSession();
         router.push('/app');
     } catch (error) {
       console.error('Error al conectar el usuario', error);
