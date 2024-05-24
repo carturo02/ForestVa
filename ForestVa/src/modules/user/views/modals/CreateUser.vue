@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import InputText from 'primevue/inputtext';
 import FloatLabel from 'primevue/floatlabel';
 import {useSendRequest} from '@/common/utils/useSendRequest.ts';

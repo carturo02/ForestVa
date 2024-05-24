@@ -1,8 +1,10 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 import VTable from '@/components/VTable.vue';
 import Column from 'primevue/column';
 import CreateUser from '../modals/CreateUser.vue';
+import {Admin} from '../../classes/Admin.ts' ;
+import InputText from 'primevue/inputtext';
 
 const admins = ref([]);
 
@@ -19,7 +21,7 @@ const form = {component: CreateUser, header: 'New Admin'};
 </script>
 
 <template>
-    <VTable v-model="admins" :cb="cb" :url="'Admins'" :form="form" dataKey="id">
+    <VTable :controller="Admin" :form="form" dataKey="id">
         <Column field="user_name" header="User Name">
             <template #editor="{ data, field }">
                 <InputText v-model="data[field]"></InputText>
@@ -35,6 +37,6 @@ const form = {component: CreateUser, header: 'New Admin'};
                 <InputText v-model="data[field]"></InputText>
             </template>
         </Column>
-        <Column field="parcel" header="Parcel"></Column>
+        <Column field="parcelid" header="Parcel"></Column>
     </VTable>
 </template>

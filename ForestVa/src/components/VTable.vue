@@ -1,16 +1,13 @@
-<script setup>
+<script setup lang="ts">
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Button from 'primevue/button'
-import axios from 'axios';
 import useEvents from '@/common/utils/useEvents';
-import { defineModel } from 'vue';
 import { ref } from 'vue';
 import { VueElement } from 'vue';
-import { useSendRequest } from '@/common/utils/useSendRequest';
 
 const props = defineProps({
-    url: String,
+    controller: Object,
     cb: Function,
     form: {
         type: {
@@ -21,32 +18,16 @@ const props = defineProps({
     dataKey: String
 });
 
-const elements = defineModel();
+const { response } = props.controller.getElements();
 const editingRows = ref(false);
-
-(async ()=>{
-    const response = await axios.get(`http://localhost:3000/api/${props.url}`);
-    
-    props.cb(response.data);
-})()
 
 function create() {
     useEvents().dispatch('showDialog', props.form);
     console.log('Crear');
 }
 
-function edit(event) {
-    useSendRequest({
-        url: `${props.url}/${event.data[props.dataKey]}`,
-        method: 'PATCH',
-        data: event.newData.value
-    })
-    console.log(event);
-}
-
-function delet(data) {
- 
-    console.log('Eliminar', data);
+function edit(event){
+    props.controller.edit(event.newData);
 }
 </script>
 
@@ -55,7 +36,7 @@ function delet(data) {
         <DataTable 
         v-model:editingRows="editingRows"
         editMode="row"
-        :value="elements"
+        :value="response"
         stripedRows 
         tableStyle="min-width: 70rem"
         :dataKey="props.dataKey"
@@ -73,7 +54,7 @@ function delet(data) {
             <Column :rowEditor="true"></Column>
             <Column header="">
                 <template #body="slotProps">
-                    <Button severity="danger" class="btn" @click="delet(slotProps.data)">
+                    <Button severity="danger" class="btn" @click="props.controller.deleteElement(slotProps.data[props.dataKey])">
                         <i class="icon ion-close"></i>
                     </Button>
                 </template>

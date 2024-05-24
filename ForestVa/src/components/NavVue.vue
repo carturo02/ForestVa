@@ -3,11 +3,6 @@
 	      <div class="container">
 	        <div class="slim-header-left">
 	          <h2 class="slim-logo"><a href="index.html">ForestVa<span>.</span></a></h2>
-	
-	          <div class="search-box">
-	            <input type="text" class="form-control" placeholder="Search">
-	            <button class="btn btn-primary"><i class="fa fa-search"></i></button>
-	          </div><!-- search-box -->
 	        </div><!-- slim-header-left -->
 	        <div class="slim-header-right">
 	          <div class="dropdown dropdown-a">
@@ -125,11 +120,8 @@
 	            </a>
 				<div class="dropdown-menu dropdown-menu-right">
     <nav class="nav">
-      <a @click="openModal('profileModal')"><i class="icon ion-person"></i> Ver Perfil</a>
-      <a @click="openModal('editProfileModal')"><i class="icon ion-compose"></i> Editar Perfil</a>
-      <a @click="openModal('activityLogModal')"><i class="icon ion-ios-bolt"></i> Registro de Actividad</a>
-      <a @click="openModal('accountSettingsModal')"><i class="icon ion-ios-gear"></i> Configuración de la Cuenta</a>
-      <a @click="openModal('signOutModal')"><i class="icon ion-forward"></i> Cerrar Sesión</a>
+      <button @click="openProfile()"><i class="icon ion-person"></i> Ver Perfil</button>
+      <button><i class="icon ion-forward"></i> Cerrar Sesión</button>
     </nav>
   </div>
  
@@ -140,6 +132,20 @@
 	    </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import useEvents from '../common/utils/useEvents.ts';
 
+function openProfile(m: string){
+	useEvents().dispatch('showDialog', { component: null, header: 'Profile'});
+}
 </script>
+
+<style scoped>
+button{
+	cursor: pointer;
+	text-align: start;
+	outline: none;
+	border: none;
+	margin: 5px;
+}
+</style>
