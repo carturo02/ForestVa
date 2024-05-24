@@ -27,4 +27,12 @@ export abstract class Controller {
             method: 'DELETE'
         })
     }
+
+    static createElement(data){
+        useSendRequest({
+            url: this.url,
+            method: 'POST',
+            data
+        })
+    }
 }

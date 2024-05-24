@@ -1,5 +1,5 @@
 import { useSendRequest } from "@/common/utils/useSendRequest";
-import { Controller } from "./User";
+import { Controller } from "../../../common/utils/Controller";
 
 export class Admin extends Controller {
     static url = 'Admins';

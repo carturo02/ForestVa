@@ -3,7 +3,9 @@ import { ref } from 'vue';
 import VTable from '@/components/VTable.vue';
 import Column from 'primevue/column';
 import CreatePlant from '../modals/CreatePlant.vue';
-
+import { Plant } from '../../classes/Plants.ts';
+import InputNumber from 'primevue/inputnumber';
+import InputText from 'primevue/inputtext';
 const plants = ref([]);
 
 const cb = (data) => {
@@ -19,18 +21,50 @@ const cb = (data) => {
     }));
 }
 
-const form = {component: CreatePlant, header: 'New Plant'};
+const form = { component: CreatePlant, header: 'New Plant' };
 </script>
 
 <template>
-    <VTable v-model="plants" :cb="cb" :url="'Plants'" :form="form">
-        <Column field="structure" header="Structure" ></Column>
-            <Column field="specie" header="Specie"></Column>
-            <Column field="height" header="Height"></Column>
-            <Column field="shaft_height" header="Shaft Height"></Column>
-            <Column field="minx" header="Minimum X"></Column>
-            <Column field="maxx" header="Maximum X"></Column>
-            <Column field="miny" header="Minimum Y"></Column>
-            <Column field="minx" header="Maximim Y"></Column>
+    <VTable :controller="Plant" :form="form" dataKey="id">
+        <Column field="structure" header="Structure">
+            <template #editor="{ data, field }">
+                <InputText v-model="data[field]"></InputText>
+            </template>
+        </Column>
+        <Column field="specie" header="Specie">
+            <template #editor="{ data, field }">
+                <InputText v-model="data[field]"></InputText>
+            </template>
+        </Column>
+        <Column field="height" header="Height">
+            <template #editor="{ data, field }">
+                <InputNumber v-model="data[field]"></InputNumber>
+            </template>
+        </Column>
+        <Column field="shaft_height" header="Shaft Height">
+            <template #editor="{ data, field }">
+                <InputNumber v-model="data[field]"></InputNumber>
+            </template>
+        </Column>
+        <Column field="minx" header="Minimum X">
+            <template #editor="{ data, field }">
+                <InputNumber v-model="data[field]"></InputNumber>
+            </template>
+        </Column>
+        <Column field="maxx" header="Maximum X">
+            <template #editor="{ data, field }">
+                <InputNumber v-model="data[field]"></InputNumber>
+            </template>
+        </Column>
+        <Column field="miny" header="Minimum Y">
+            <template #editor="{ data, field }">
+                <InputNumber v-model="data[field]"></InputNumber>
+            </template>
+        </Column>
+        <Column field="miny" header="Maximim Y">
+            <template #editor="{ data, field }">
+                <InputNumber v-model="data[field]"></InputNumber>
+            </template>
+        </Column>
     </VTable>
 </template>

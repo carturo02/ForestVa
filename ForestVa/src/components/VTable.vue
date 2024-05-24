@@ -51,7 +51,7 @@ function edit(event){
                 </template>
             </Column>
             <slot></slot>
-            <Column :rowEditor="true"></Column>
+            <Column :rowEditor="true" style="width: 10%; min-width: 8rem" bodyStyle="text-align:center"></Column>
             <Column header="">
                 <template #body="slotProps">
                     <Button severity="danger" class="btn" @click="props.controller.deleteElement(slotProps.data[props.dataKey])">
