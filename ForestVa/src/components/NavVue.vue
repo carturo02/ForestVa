@@ -120,8 +120,8 @@
 	            </a>
 				<div class="dropdown-menu dropdown-menu-right">
     <nav class="nav">
-      <button @click="openProfile()"><i class="icon ion-person"></i> Ver Perfil</button>
-      <button><i class="icon ion-forward"></i> Cerrar Sesión</button>
+      <button @click="openProfile"><i class="icon ion-person"></i> Ver Perfil</button>
+      <button @click="closeSession"><i class="icon ion-forward"></i> Cerrar Sesión</button>
     </nav>
   </div>
  
@@ -133,10 +133,17 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
 import useEvents from '../common/utils/useEvents.ts';
+import VProfile from '../modules/user/views/modals/VProfile.vue';
 
-function openProfile(m: string){
-	useEvents().dispatch('showDialog', { component: null, header: 'Profile'});
+function closeSession(){
+	sessionStorage.removeItem('jwt');
+	const router = useRouter();
+	router.push('/');
+}
+function openProfile(){
+	useEvents().dispatch('showDialog', { component: VProfile, header: 'Profile'});
 }
 </script>
 

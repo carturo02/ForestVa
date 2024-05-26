@@ -37,7 +37,7 @@ async function submitForm() {
             password: password.value
         });
 
-        sessionStorage.setItem('jwt', response.data.jwt);
+        sessionStorage.setItem('jwt', response.data.token);
         loadSession();
         router.push('/app');
     } catch (error) {

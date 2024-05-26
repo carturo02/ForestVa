@@ -15,7 +15,7 @@ interface UseSendRequestResult {
     sendRequest?: CallableFunction
 }
 
-export function useSendRequest(requestOptions: RequestOptions, cb = () => { }): UseSendRequestResult {
+export function useSendRequest(requestOptions: RequestOptions, cb = (response?: any, error?: Ref<AxiosError | null>) => { }): UseSendRequestResult {
     const response = ref();
     const loading = ref<boolean>(false);
     const error = ref<AxiosError | null>(null);
@@ -48,7 +48,7 @@ export function useSendRequest(requestOptions: RequestOptions, cb = () => { }): 
             })
             .finally(async () => {
                 loading.value = false;
-                cb();
+                cb(response, error);
             });
 
         loading.value = true;
