@@ -1,13 +1,14 @@
 import { useSendRequest } from "@/common/utils/useSendRequest";
+import useEvents from "./useEvents";
 
 export abstract class Controller {
     static url: string;
     static delete: string;
 
-    static getElements(){
+    static getElements() {
         const { response } = useSendRequest({
             url: this.url
-        })        
+        })
         return { response }
     }
 
@@ -22,22 +23,30 @@ export abstract class Controller {
     }
 
     static deleteElement(id) {
-        const {error} = useSendRequest({
+        useSendRequest({
             url: `${this.delete}/${id}`,
             method: 'DELETE'
         }, this.handleError)
     }
 
-    static createElement(data){
-        const {error} = useSendRequest({
+    static createElement(data) {
+        useSendRequest({
             url: this.url,
             method: 'POST',
             data
         }, this.handleError)
     }
 
-    private static handleError (response, error){
-        if(!error?.value)
+    private static handleError(response, error) {
+        if (!error?.value){
             window.location.reload();
+        }
+        else
+            useEvents().dispatch('showToast', {
+                severity: 'error',
+                summary: 'Error message',
+                detail: error.value.message,
+                life: 3000,
+            });
     }
 }

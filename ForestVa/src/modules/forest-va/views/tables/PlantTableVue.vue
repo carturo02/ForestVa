@@ -61,7 +61,7 @@ const form = { component: CreatePlant, header: 'New Plant' };
                 <InputNumber v-model="data[field]"></InputNumber>
             </template>
         </Column>
-        <Column field="maxy" header="Maximim Y">
+        <Column field="maxy" header="Maximum Y">
             <template #editor="{ data, field }">
                 <InputNumber v-model="data[field]"></InputNumber>
             </template>

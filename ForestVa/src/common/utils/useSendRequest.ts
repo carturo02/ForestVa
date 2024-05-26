@@ -44,7 +44,7 @@ export function useSendRequest(requestOptions: RequestOptions, cb = (response?: 
                 error.value = null
             })
             .catch(err => {
-                error.value = err
+                error.value = err.response.data
             })
             .finally(async () => {
                 loading.value = false;

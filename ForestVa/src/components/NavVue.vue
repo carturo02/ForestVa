@@ -137,9 +137,10 @@ import { useRouter } from 'vue-router';
 import useEvents from '../common/utils/useEvents.ts';
 import VProfile from '../modules/user/views/modals/VProfile.vue';
 
+const router = useRouter();
 function closeSession(){
 	sessionStorage.removeItem('jwt');
-	const router = useRouter();
+	
 	router.push('/');
 }
 function openProfile(){
