@@ -26,42 +26,42 @@ const form = { component: CreatePlant, header: 'New Plant' };
 
 <template>
     <VTable :controller="Plant" :form="form" dataKey="id">
-        <Column field="structure" header="Structure">
+        <Column field="structure" :header="$t('table.plant.structure')">
             <template #editor="{ data, field }">
                 <InputText v-model="data[field]"></InputText>
             </template>
         </Column>
-        <Column field="specie" header="Specie">
+        <Column field="specie" :header="$t('table.plant.specie')">
             <template #editor="{ data, field }">
                 <InputText v-model="data[field]"></InputText>
             </template>
         </Column>
-        <Column field="height" header="Height">
+        <Column field="height" :header="$t('table.plant.height')">
             <template #editor="{ data, field }">
                 <InputNumber v-model="data[field]"></InputNumber>
             </template>
         </Column>
-        <Column field="shaft_height" header="Shaft Height">
+        <Column field="shaft_height" :header="$t('table.plant.shaft_height')">
             <template #editor="{ data, field }">
                 <InputNumber v-model="data[field]"></InputNumber>
             </template>
         </Column>
-        <Column field="minx" header="Minimum X">
+        <Column field="minx" :header="$t('table.plant.minx')">
             <template #editor="{ data, field }">
                 <InputNumber v-model="data[field]"></InputNumber>
             </template>
         </Column>
-        <Column field="maxx" header="Maximum X">
+        <Column field="maxx" :header="$t('table.plant.maxx')">
             <template #editor="{ data, field }">
                 <InputNumber v-model="data[field]"></InputNumber>
             </template>
         </Column>
-        <Column field="miny" header="Minimum Y">
+        <Column field="miny" :header="$t('table.plant.miny')">
             <template #editor="{ data, field }">
                 <InputNumber v-model="data[field]"></InputNumber>
             </template>
         </Column>
-        <Column field="maxy" header="Maximum Y">
+        <Column field="maxy" :header="$t('table.plant.maxy')">
             <template #editor="{ data, field }">
                 <InputNumber v-model="data[field]"></InputNumber>
             </template>

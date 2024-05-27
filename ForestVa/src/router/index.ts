@@ -8,6 +8,7 @@ import PlantTableVue from '@/modules/forest-va/views/tables/PlantTableVue.vue';
 import PolygonalTableVue from '@/modules/forest-va/views/tables/PolygonalTableVue.vue';
 import ParcelTableVue from '@/modules/forest-va/views/tables/ParcelTableVue.vue';
 import { useSession } from '@/common/site/useUser';
+import SuperUserTable from '@/modules/user/views/tables/SuperUserTable.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -63,6 +64,14 @@ const router = createRouter({
           path: '/parcels', 
           name: 'parcels', 
           component: ParcelTableVue, 
+          meta: {
+            requiresAuth: true
+          } 
+        },
+        { 
+          path: '/superusers', 
+          name: 'parcels', 
+          component: SuperUserTable, 
           meta: {
             requiresAuth: true
           } 

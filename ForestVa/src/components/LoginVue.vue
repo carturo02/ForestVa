@@ -1,18 +1,19 @@
 <template>
+    <LanguageSelector class="language-selector"></LanguageSelector>
     <div class="l-form">
             <form @submit.prevent="submitForm" class="form">
-                <h1 class="form__title" style="color: green">Sign-in ForestVa</h1>
+                <h1 class="form__title" style="color: green">ForestVa</h1>
 
                 <div class="form__div">
                     <input v-model="username" class="form__input" placeholder=" ">
-                    <label for="" class="form__label" style="background-color: transparent;">Username</label>
+                    <label for="" class="form__label" style="background-color: transparent;">{{ $t('login.user_name') }}</label>
                 </div>
                 <div class="form__div">
                     <input type="password" v-model="password" class="form__input" placeholder=" ">
-                    <label for="" class="form__label" style="background-color: transparent;">Password</label>
+                    <label for="" class="form__label" style="background-color: transparent;">{{ $t('login.password')}}</label>
                 </div>
                 <p class="error" v-if="errorMessage">{{ errorMessage }}</p>
-                <input type="submit" class="form__button" value="Sign In">
+                <input type="submit" class="form__button" :value="$t('login.sign_in')">
                 
             </form>
         </div>
@@ -23,7 +24,8 @@
 import axios from 'axios';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { loadSession } from '../common/site/useUser.ts';
+import { loadSession } from '../common/site/useUser';
+import LanguageSelector from './LanguageSelector.vue';
 
 const router = useRouter();
 const username = ref('');
@@ -52,6 +54,11 @@ async function submitForm() {
 
 
 <style scoped>
+.language-selector{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
 .error {
   color: red;}
 /*===== BASE =====*/

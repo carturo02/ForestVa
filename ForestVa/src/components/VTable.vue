@@ -5,6 +5,7 @@ import Button from 'primevue/button'
 import useEvents from '@/common/utils/useEvents';
 import { ref } from 'vue';
 import { VueElement } from 'vue';
+import { computed } from 'vue';
 
 const props = defineProps({
     controller: Object,
@@ -15,11 +16,16 @@ const props = defineProps({
             header: String
         }
     },
-    dataKey: String
+    dataKey: String,
+    edition: {
+        type: Boolean,
+        default: true
+    },
+    deletion: Boolean
 });
 
 const { response } = props.controller.getElements();
-const editingRows = ref(false);
+const editingRows = ref(!props.edition);
 
 function create() {
     useEvents().dispatch('showDialog', props.form);
@@ -45,13 +51,13 @@ function edit(event){
             <Column>
                 <template #header>
                     <Button class="btn" @click="create">
-                        CREATE NEW 
+                        {{$t('table.create')}}
                         <i class="icon ion-plus"></i>
                     </Button>
                 </template>
             </Column>
             <slot></slot>
-            <Column :rowEditor="true" style="width: 10%; min-width: 8rem" bodyStyle="text-align:center"></Column>
+            <Column v-if="props.edition" :rowEditor="true" style="width: 10%; min-width: 8rem" bodyStyle="text-align:center"></Column>
             <Column header="">
                 <template #body="slotProps">
                     <Button severity="danger" class="btn" @click="props.controller.deleteElement(slotProps.data[props.dataKey])">

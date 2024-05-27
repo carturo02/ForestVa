@@ -3,14 +3,14 @@ import VTable from '@/components/VTable.vue';
 import Column from 'primevue/column';
 import InputText from 'primevue/inputtext';
 import CreateUser from '../modals/CreateUser.vue';
-import { Observer } from '../../classes/Observer.ts';
+import { SuperUser } from '../../classes/SuperUser';
 
 const form = {component: CreateUser, header: 'New Observer'};
 
 </script>
 
 <template>
-    <VTable :controller="Observer" :form="form" dataKey="id">
+    <VTable :controller="SuperUser" :form="form" dataKey="id">
         <Column field="user_name" :header="$t('table.user.user_name')">
             <template #editor="{ data, field }">
                 <InputText v-model="data[field]"></InputText>
@@ -26,6 +26,5 @@ const form = {component: CreateUser, header: 'New Observer'};
                 <InputText v-model="data[field]"></InputText>
             </template>
         </Column>
-        <Column field="parcelid" :header="$t('table.user.parcel')"></Column>
     </VTable>
 </template>

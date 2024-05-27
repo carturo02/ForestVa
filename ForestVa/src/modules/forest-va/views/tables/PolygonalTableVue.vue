@@ -1,28 +1,17 @@
 <script setup>
-import { ref } from 'vue';
 import VTable from '@/components/VTable.vue';
 import Column from 'primevue/column';
-
-const plants = ref([]);
-
-const cb = (data) => {
-    plants.value = data.map(polygonal => ({
-        minx: polygonal.minx,
-        maxx: polygonal.maxx,
-        miny: polygonal.miny,
-        maxy: polygonal.maxy
-    }));
-}
+import { Polygonal } from '../../classes/Polygonals';
 
 const form = { component: null, header: 'New Polygonal' };
 </script>
 
 <template>
-    <VTable v-model="plants" :cb="cb" :url="'Polygonals'" :form="form">
-
-        <Column field="minx" header="Minimum X"></Column>
-        <Column field="maxx" header="Maximum X"></Column>
-        <Column field="miny" header="Minimum Y"></Column>
-        <Column field="maxy" header="Maximum Y"></Column>
+    <VTable :controller="Polygonal" :form="form" dataKey="id">
+        <Column field="id" :header="$t('table.parcel.polygonal')"></Column>
+        <Column field="minx" :header="$t('table.plant.minx')"></Column>
+        <Column field="maxx" :header="$t('table.plant.maxx')"></Column>
+        <Column field="miny" :header="$t('table.plant.miny')"></Column>
+        <Column field="maxy" :header="$t('table.plant.maxy')"></Column>
     </VTable>
 </template>

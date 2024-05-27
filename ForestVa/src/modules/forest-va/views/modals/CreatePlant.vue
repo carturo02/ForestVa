@@ -18,110 +18,90 @@ const plant = ref({
     parcelId: null
 })
 
-function createPlant(){
+function createPlant() {
     Plant.createElement(plant.value);
 }
 </script>
 
 <template>
     <form action="" @submit.prevent="createPlant">
-        <section>
-            <FloatLabel class="input-sections">
-                <InputText id="structure" v-model="plant.structure"></InputText>
-                <label for="structure">Structure</label>
-            </FloatLabel>
-            <FloatLabel class="input-sections">
-                <InputText id="specie" v-model="plant.specie"></InputText>
-                <label for="specie">Specie</label>
-            </FloatLabel>
-            <FloatLabel class="input-sections">
-                <InputNumber id="height" v-model="plant.height"/>
-                <label for="height">Height</label>
-            </FloatLabel>
-            <FloatLabel class="input-sections">
-                <InputNumber id="shaft_height" v-model="plant.shaft_height"/>
-                <label for="shaft_height">Shaft height</label>
-            </FloatLabel>
-        </section>
-        <section>
-            <FloatLabel class="input-sections">
-                <InputNumber id="minx" v-model="plant.minx"/>
-                <label for="minx">Min X</label>
-            </FloatLabel>
-            <FloatLabel class="input-sections">
-                <InputNumber id="miny" v-model="plant.miny"/>
-                <label for="miny">Min Y</label>
-            </FloatLabel>
-            <FloatLabel class="input-sections">
-                <InputNumber id="maxx" v-model="plant.maxx"/>
-                <label for="maxx">Max X</label>
-            </FloatLabel>
-            <FloatLabel class="input-sections">
-                <InputNumber id="maxy" v-model="plant.maxy"/>
-                <label for="maxy">Max Y</label>
-            </FloatLabel>
-        </section>
-        <section>
-            <FloatLabel class="input-sections">
-                <InputText id="parcel" v-model="plant.parcelId"/>
-                <label for="parcel">Parcel</label>
-            </FloatLabel>
-            <Button type="submit" class="btn">Create</Button>
+        <div>
+            <section>
+                <FloatLabel class="input-sections">
+                    <InputText id="structure" v-model="plant.structure"></InputText>
+                    <label for="structure">{{ $t('table.plant.structure') }}</label>
+                </FloatLabel>
+                <FloatLabel class="input-sections">
+                    <InputText id="specie" v-model="plant.specie"></InputText>
+                    <label for="specie">{{$t('table.plant.specie')}}</label>
+                </FloatLabel>
+                <FloatLabel class="input-sections">
+                    <InputNumber id="height" v-model="plant.height" />
+                    <label for="height">{{$t('table.plant.height')}}</label>
+                </FloatLabel>
+                <FloatLabel class="input-sections">
+                    <InputNumber id="shaft_height" v-model="plant.shaft_height" />
+                    <label for="shaft_height">{{$t('table.plant.shaft_height')}}</label>
+                </FloatLabel>
+            </section>
+            <section>
+                <FloatLabel class="input-sections">
+                    <InputNumber id="minx" v-model="plant.minx" />
+                    <label for="minx">{{ $t('table.plant.minx') }}</label>
+                </FloatLabel>
+                <FloatLabel class="input-sections">
+                    <InputNumber id="miny" v-model="plant.miny" />
+                    <label for="miny">{{ $t('table.plant.miny') }}</label>
+                </FloatLabel>
+                <FloatLabel class="input-sections">
+                    <InputNumber id="maxx" v-model="plant.maxx" />
+                    <label for="maxx">{{ $t('table.plant.maxx') }}</label>
+                </FloatLabel>
+                <FloatLabel class="input-sections">
+                    <InputNumber id="maxy" v-model="plant.maxy" />
+                    <label for="maxy">{{ $t('table.plant.maxy') }}</label>
+                </FloatLabel>
+            </section>
+        </div>
+        <section class="section-button">
+            <Button type="submit" class="btn">{{ $t('table.create') }}</Button>
         </section>
     </form>
 </template>
 
 
 <style scoped>
-form{
+form div {  
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 35px;
-    max-width: 33.9rem
+    justify-content: center;
 }
-form .input-sections{
+
+form .input-sections {
     margin-bottom: 35px;
 }
 
-form .input-sections:first-child{
+form .input-sections:first-child {
     margin-top: 20px;
 }
 
-form .input-sections:last-child{
+form .input-sections:last-child {
     margin-bottom: 0;
 }
 
-section:last-child{
-    display: flex;
-    margin-top: 20px;
-    width: 100%;
-    justify-content: space-between;
-}
-
-section:last-child .input-sections{
-    margin-top: 0;
-    margin-bottom: 0;
-}
 .btn {
+    margin: 10px;
     border-radius: 5px;
     height: 40px;
     width: 100px
 }
 
-section{
+section {
     margin: 10px;
 }
 
-@media (max-width: 590px){
-    form{
-        justify-content: center;
-    }
-    section:last-child{
-        flex-direction: column;
-        align-items: center;
-    }
-    .btn{
-        margin-top: 20px;
-    }
+.section-button{
+    display: flex;
+    justify-content: end;
 }
 </style>
