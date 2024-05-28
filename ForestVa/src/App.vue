@@ -5,15 +5,17 @@ import useEvents from './common/utils/useEvents';
 import type { VNode } from 'vue';
 import Toast from 'primevue/toast';
 import { useToast } from 'primevue/usetoast';
+import { useI18n } from 'vue-i18n';
 
 const dialogVisible = ref(false);
 
 const toast = useToast();
 
+const { t } = useI18n();
 useEvents().addListener('showDialog', (component: CustomEventInit)=>{
   dialogVisible.value = true;
   modalBody = component.detail.component;
-  header.value = component.detail.header;
+  header.value = t(component.detail.header);
 });
 
 useEvents().addListener('showToast', (event: CustomEventInit)=>{

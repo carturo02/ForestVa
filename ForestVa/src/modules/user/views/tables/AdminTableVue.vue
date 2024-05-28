@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import VTable from '@/components/VTable.vue';
 import Column from 'primevue/column';
 import CreateUser from '../modals/CreateUser.vue';
-import {Admin} from '../../classes/Admin.ts' ;
+import {Admin} from '../../classes/Admin' ;
 import InputText from 'primevue/inputtext';
 
-const form = {component: CreateUser, header: 'New Admin'};
+const form = {component: CreateUser, header: 'modal.create.admin'};
 </script>
 
 <template>

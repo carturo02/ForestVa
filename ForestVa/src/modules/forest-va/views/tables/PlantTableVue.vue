@@ -21,7 +21,7 @@ const cb = (data) => {
     }));
 }
 
-const form = { component: CreatePlant, header: 'New Plant' };
+const form = { component: CreatePlant, header: 'modal.create.plant' };
 </script>
 
 <template>

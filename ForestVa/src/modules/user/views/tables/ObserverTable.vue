@@ -5,7 +5,7 @@ import InputText from 'primevue/inputtext';
 import CreateUser from '../modals/CreateUser.vue';
 import { Observer } from '../../classes/Observer.ts';
 
-const form = {component: CreateUser, header: 'New Observer'};
+const form = {component: CreateUser, header: 'modal.create.observer'};
 
 </script>
 

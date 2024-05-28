@@ -5,7 +5,7 @@ import { Polygonal } from '../../classes/Polygonals';
 import InputNumber from 'primevue/inputnumber';
 import CreatePolygonal from '../modals/CreatePolygonal.vue';
 
-const form = { component: CreatePolygonal, header: 'New Polygonal' };
+const form = { component: CreatePolygonal, header: 'modal.create.polygonal' };
 </script>
 
 <template>

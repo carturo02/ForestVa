@@ -5,7 +5,7 @@ import { Parcel } from '../../classes/Parcels.ts';
 import Calendar from 'primevue/calendar';
 import InputNumber from 'primevue/inputnumber';
 
-const form = {component: null, header: 'New Parcel'}
+const form = {component: null, header: 'modal.create.parcel'}
 </script>
 
 <template>

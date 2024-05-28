@@ -41,6 +41,16 @@ const en = {
             polygonal: 'Polygonal',
             beggining_date: 'Beggining Date'
         }
+    },
+    modal:{
+        create: {
+            observer: 'New Observer',
+            admin: 'New Admin',
+            superuser: 'New Super User',
+            plant: 'New Plant',
+            parcel: 'New Parcel',
+            polygonal: 'New Polygonal'
+        }
     }
 }
 
