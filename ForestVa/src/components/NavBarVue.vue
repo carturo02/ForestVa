@@ -51,6 +51,7 @@
 
 <script setup>
 import { useSession } from '@/common/site/useUser';
+import { RouterLink } from 'vue-router';
 
 const session = useSession();
 </script>

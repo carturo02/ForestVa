@@ -9,6 +9,7 @@ import PolygonalTableVue from '@/modules/forest-va/views/tables/PolygonalTableVu
 import ParcelTableVue from '@/modules/forest-va/views/tables/ParcelTableVue.vue';
 import { useSession } from '@/common/site/useUser';
 import SuperUserTable from '@/modules/user/views/tables/SuperUserTable.vue';
+import useEvents from '@/common/utils/useEvents';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -70,7 +71,7 @@ const router = createRouter({
         },
         { 
           path: '/superusers', 
-          name: 'parcels', 
+          name: 'superusers', 
           component: SuperUserTable, 
           meta: {
             requiresAuth: true
@@ -87,8 +88,8 @@ const router = createRouter({
 
 router.beforeEach((to, from, next)=>{
   if(to.meta.requiresAuth && !useSession()){
-    console.log('Unauthorized')
     router.push(from);
+    //useEvents().dispatch('showToast', 'Unouthorized')
   }
   else
     next();

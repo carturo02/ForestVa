@@ -35,7 +35,7 @@ const es = {
             minx: "X inferior",
             maxx: "X superior",
             miny: "Y inferior",
-            maxy: "X superior",
+            maxy: "Y superior",
         },
         parcel: {
             polygonal: 'Poligonal',

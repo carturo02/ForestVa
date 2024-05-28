@@ -5,7 +5,6 @@ import Button from 'primevue/button'
 import useEvents from '@/common/utils/useEvents';
 import { ref } from 'vue';
 import { VueElement } from 'vue';
-import { computed } from 'vue';
 
 const props = defineProps({
     controller: Object,
@@ -21,7 +20,10 @@ const props = defineProps({
         type: Boolean,
         default: true
     },
-    deletion: Boolean
+    deletion: {
+        type: Boolean,
+        default: true
+    }
 });
 
 const { response } = props.controller.getElements();
@@ -58,7 +60,7 @@ function edit(event){
             </Column>
             <slot></slot>
             <Column v-if="props.edition" :rowEditor="true" style="width: 10%; min-width: 8rem" bodyStyle="text-align:center"></Column>
-            <Column header="">
+            <Column v-if="props.deletion" header="">
                 <template #body="slotProps">
                     <Button severity="danger" class="btn" @click="props.controller.deleteElement(slotProps.data[props.dataKey])">
                         <i class="icon ion-close"></i>

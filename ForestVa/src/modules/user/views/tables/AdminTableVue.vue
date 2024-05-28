@@ -6,17 +6,6 @@ import CreateUser from '../modals/CreateUser.vue';
 import {Admin} from '../../classes/Admin.ts' ;
 import InputText from 'primevue/inputtext';
 
-const admins = ref([]);
-
-const cb = (data) => {
-    admins.value = data.map(admin => ({
-        user_name: admin.user.user_name,
-        first_name: admin.user.first_name,
-        last_name: admin.user.last_name,
-        parcel: admin.parcelid
-    }));
-}
-
 const form = {component: CreateUser, header: 'New Admin'};
 </script>
 
