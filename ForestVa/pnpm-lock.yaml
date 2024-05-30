@@ -8,6 +8,9 @@ dependencies:
   axios:
     specifier: ^1.6.8
     version: 1.6.8(debug@4.3.4)
+  html2pdf:
+    specifier: ^0.0.11
+    version: 0.0.11
   ionicons:
     specifier: ^7.4.0
     version: 7.4.0
@@ -2681,6 +2684,10 @@ packages:
     resolution: {integrity: sha512-ztqyC3kLto0e9WbNp0aeP+M3kTt+nbaIveGmUxAtZa+8iFgKLUOD4YKM5j+f3QD89bra7UeumolZHKuOXnTmeQ==, tarball: https://registry.npmjs.org/html-tags/-/html-tags-3.3.1.tgz}
     engines: {node: '>=8'}
     dev: true
+
+  /html2pdf@0.0.11:
+    resolution: {integrity: sha512-Kx3I5r7lazHZzZv5lDk59jQoTxqaEGlf2BcGNvzWGPQVu0hE8jYCk4hboksuaCvmMJPa0S0A+156ZbE71Wdo2w==, tarball: https://registry.npmjs.org/html2pdf/-/html2pdf-0.0.11.tgz}
+    dev: false
 
   /http-proxy-agent@7.0.2:
     resolution: {integrity: sha512-T1gkAiYYDWYx3V5Bmyu7HcfcvL7mUrTWiM6yOfa3PIphViJ/gFPbvidQ+veqSOHci/PxBcDabeUNCzpOODJZig==, tarball: https://registry.npmjs.org/http-proxy-agent/-/http-proxy-agent-7.0.2.tgz}

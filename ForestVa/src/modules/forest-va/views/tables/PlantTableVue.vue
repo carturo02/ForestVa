@@ -1,31 +1,7 @@
-<script setup>
-import { ref } from 'vue';
-import VTable from '@/components/VTable.vue';
-import Column from 'primevue/column';
-import CreatePlant from '../modals/CreatePlant.vue';
-import { Plant } from '../../classes/Plants.ts';
-import InputNumber from 'primevue/inputnumber';
-import InputText from 'primevue/inputtext';
-const plants = ref([]);
 
-const cb = (data) => {
-    plants.value = data.map(plant => ({
-        structure: plant.structure,
-        specie: plant.specie,
-        height: plant.height,
-        shaft_height: plant.shaft_height,
-        minx: plant.minx,
-        maxx: plant.maxx,
-        miny: plant.miny,
-        maxy: plant.maxy
-    }));
-}
-
-const form = { component: CreatePlant, header: 'modal.create.plant' };
-</script>
 
 <template>
-    <VTable :controller="Plant" :form="form" dataKey="id">
+   <VETable :controller="Plant" :form="form" dataKey="id">
         <Column field="structure" :header="$t('table.plant.structure')">
             <template #editor="{ data, field }">
                 <InputText v-model="data[field]"></InputText>
@@ -66,5 +42,31 @@ const form = { component: CreatePlant, header: 'modal.create.plant' };
                 <InputNumber v-model="data[field]"></InputNumber>
             </template>
         </Column>
-    </VTable>
+    </VETable>
 </template>
+
+<script setup>
+import { ref } from 'vue';
+import VETable from '@/components/VETable.vue';
+import Column from 'primevue/column';
+import CreatePlant from '../modals/CreatePlant.vue';
+import { Plant } from '../../classes/Plants.ts';
+import InputNumber from 'primevue/inputnumber';
+import InputText from 'primevue/inputtext';
+
+const plants = ref([]);
+const form = { component: CreatePlant, header: 'modal.create.plant' };
+
+const cb = (data) => {
+    plants.value = data.map(plant => ({
+        structure: plant.structure,
+        specie: plant.specie,
+        height: plant.height,
+        shaft_height: plant.shaft_height,
+        minx: plant.minx,
+        maxx: plant.maxx,
+        miny: plant.miny,
+        maxy: plant.maxy
+    }));
+}
+</script>
