@@ -93,7 +93,7 @@ form .input-sections:last-child {
     margin: 10px;
     border-radius: 5px;
     height: 40px;
-    width: 100px
+    width: 120px
 }
 
 section {

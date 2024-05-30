@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import InputText from 'primevue/inputtext';
 import FloatLabel from 'primevue/floatlabel';
-import { useSendRequest } from '@/common/utils/useSendRequest.ts';
+import { useSendRequest } from '@/common/utils/useSendRequest';
 import Button from 'primevue/button'
 import { ref } from 'vue';
 import { useSession } from '@/common/site/useUser';

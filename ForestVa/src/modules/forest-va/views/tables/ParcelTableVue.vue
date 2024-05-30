@@ -4,8 +4,9 @@ import Column from 'primevue/column';
 import { Parcel } from '../../classes/Parcels.ts';
 import Calendar from 'primevue/calendar';
 import InputNumber from 'primevue/inputnumber';
+import CreateParcel from '../modals/CreateParcel.vue';
 
-const form = {component: null, header: 'modal.create.parcel'}
+const form = {component: CreateParcel, header: 'modal.create.parcel'}
 </script>
 
 <template>
