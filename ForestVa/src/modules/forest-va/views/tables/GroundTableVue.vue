@@ -30,38 +30,39 @@ const exportarTablaAPdf = () => {
 <template>
     <div class="table_container">
         <div class="component_container">
-            <div class="button-export_container">
-                <button class="action-button" id="exp" @click="exportarTablaAPdf">Exportar a PDF</button>
-            </div>
+            
             <table id="datos" ref="tableEx">
-                <caption><h3>Datos del suelo</h3></caption>
+                <!---<caption><h3>Datos del suelo</h3></caption>--->
                 <tr>
                     <td>
                         <span>Condición</span>
-                        <input type="number" readonly>
+                        <input type="number" value="2" readonly>
                     </td>
                     <td>
                         <span>Erosión del relieve</span>
-                        <input type="number" readonly>
+                        <input type="number" value="4" readonly>
                     </td>
                     <td>
                         <span>Tabla de agua</span>
-                        <input type="number" readonly>
+                        <input type="number" value="3" readonly>
                     </td>
                     <td>
                         <span>Vegetación</span>
-                        <input type="number" readonly>
+                        <input type="number" value="5" readonly>
                     </td>
                     <td>
-                        <span>Puntuación Final</span>
-                        <input type="number" readonly>
+                        <span >Puntuación Final</span>
+                        <input class="points" type="number" value="2" readonly>
                     </td>
                 </tr>
             </table>
             <div class="button_container">
-                <button class="action-button" id="edit">Editar</button>
-                <button class="action-button" id="upd">Actualizar</button>
-                <button class="action-button" id="clean">Limpiar</button>
+                <button class="button" id="edit">Editar</button>
+                <button class="button" id="upd">Actualizar</button>
+                <button class="button" id="clean">Limpiar</button>
+            </div>
+            <div class="button-export_container">
+                <button class="button" id="exp" @click="exportarTablaAPdf">Exportar a PDF</button>
             </div>
         </div>
     </div>
@@ -85,10 +86,13 @@ const exportarTablaAPdf = () => {
        display: flex;
        flex-direction: column; 
        align-items: center; 
-       background-color: lightgreen; 
+       background-color: #F8F8FF; 
        border-radius: 10px;
-       width: 30%; 
+       width: 28%; 
        padding: 1rem; 
+       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+       border: 3px solid transparent;
+       box-sizing: border-box;
     }
 
 
@@ -99,7 +103,7 @@ const exportarTablaAPdf = () => {
    
     #datos span {
         text-align: left;
-        margin-right: 2.5rem;
+        margin-right: 4.5rem;
         margin-bottom: 0.8rem;
         font-weight: bold;
     }
@@ -114,18 +118,25 @@ const exportarTablaAPdf = () => {
     #datos input {
         border-radius: 8px; 
         margin-bottom: 0.8rem;
-        border:none;
+        border:0.1px solid black;
+        width: 2.5rem;
+        margin-left: 10px;
+        padding-left: 14.5px;
     }
+
     .button_container, .button-export_container {
-    display: flex;
-    justify-content:center; 
-    width: 100%; 
-}  
-   .action-button {
+        display: flex;
+        justify-content:center ; 
+        width: 100%; 
+    }  
+    .button-export_container{
+     margin-top:0.7rem;
+    }
+   .button {
         color: white; 
         border: none; 
         border-radius: 5px; 
-        padding: 10px 20px; 
+        padding: 7px 20px; 
         cursor: pointer; 
         font-size: 16px; 
         margin-right:0.7rem;
@@ -134,7 +145,12 @@ const exportarTablaAPdf = () => {
         background-color: red;
     }
     #edit,#upd,#clean{
-        background-color: green;
+        background-color: #10b981;
+    }
+    #datos .points{
+        background-color: transparent;
+        cursor: default;
+        border:none;
     }
 
 @media (max-width: 768px) {
