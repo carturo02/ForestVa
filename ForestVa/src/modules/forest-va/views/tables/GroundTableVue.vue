@@ -1,8 +1,42 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import html2pdf from 'html2pdf.js';
 
 const tableEx = ref(null);
+const isEditable = ref(false);
+const condition = ref(2);
+const erosion = ref(4);
+const water = ref(3);
+const vegetation = ref(5);
+
+const averageScore = computed(() => {
+    const conditionValue = Number(condition.value.value);
+    const erosionValue = Number(erosion.value.value);
+    const waterValue = Number(water.value.value);
+    const vegetationValue = Number(vegetation.value.value);
+    return (conditionValue + erosionValue + waterValue + vegetationValue) / 4;
+});
+const update = () => {
+
+};
+
+const editable = () => {
+    isEditable.value = !isEditable.value;
+    condition.value.readOnly = !isEditable.value;
+    erosion.value.readOnly = !isEditable.value;
+    water.value.readOnly = !isEditable.value;
+    vegetation.value.readOnly = !isEditable.value;
+    condition.value = 2;
+};
+
+
+const clean = () => {
+    vegetation.value.value = 2;
+    condition.value.value = 2;
+    erosion.value.value = 2;
+    water.value.value = 2;
+}
+
 
 const exportarTablaAPdf = () => {
     const tableElement = document.getElementById('datos');
@@ -22,8 +56,7 @@ const exportarTablaAPdf = () => {
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
     };
     html2pdf(clone, options);
-};
-
+}
 </script>
 
 
@@ -32,34 +65,33 @@ const exportarTablaAPdf = () => {
         <div class="component_container">
             
             <table id="datos" ref="tableEx">
-                <!---<caption><h3>Datos del suelo</h3></caption>--->
                 <tr>
                     <td>
                         <span>Condición</span>
-                        <input type="number" value="2" readonly>
+                        <input type="number" value="2" readonly ref="condition" min="2" max="5">
                     </td>
                     <td>
                         <span>Erosión del relieve</span>
-                        <input type="number" value="4" readonly>
+                        <input type="number" value="4" readonly ref="erosion" min="2" max="5">
                     </td>
                     <td>
                         <span>Tabla de agua</span>
-                        <input type="number" value="3" readonly>
+                        <input type="number" value="3" readonly ref="water" min="2" max="5">
                     </td>
                     <td>
                         <span>Vegetación</span>
-                        <input type="number" value="5" readonly>
+                        <input type="number" value="5" readonly ref="vegetation" min="2" max="5">
                     </td>
                     <td>
                         <span >Puntuación Final</span>
-                        <input class="points" type="number" value="2" readonly>
+                        <input class="points" readonly :value="averageScore">
                     </td>
                 </tr>
             </table>
             <div class="button_container">
-                <button class="button" id="edit">Editar</button>
+                <button class="button" id="edit" @click="editable">Editar</button>
                 <button class="button" id="upd">Actualizar</button>
-                <button class="button" id="clean">Limpiar</button>
+                <button class="button" id="clean" @click="clean">Limpiar</button>
             </div>
             <div class="button-export_container">
                 <button class="button" id="exp" @click="exportarTablaAPdf">Exportar a PDF</button>
@@ -68,6 +100,8 @@ const exportarTablaAPdf = () => {
     </div>
 </template>
 <style scope>
+
+
     .table_container {
         display: flex;
         justify-content: center;
@@ -151,6 +185,7 @@ const exportarTablaAPdf = () => {
         background-color: transparent;
         cursor: default;
         border:none;
+        padding-left: 10px;
     }
 
 @media (max-width: 768px) {

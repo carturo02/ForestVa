@@ -53,7 +53,6 @@ import CreatePlant from '../modals/CreatePlant.vue';
 import { Plant } from '../../classes/Plants.ts';
 import InputNumber from 'primevue/inputnumber';
 import InputText from 'primevue/inputtext';
-import html2pdf from 'html2pdf.js';
 
 const plants = ref([]);
 const form = { component: CreatePlant, header: 'modal.create.plant' };
