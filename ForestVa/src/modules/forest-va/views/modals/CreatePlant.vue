@@ -15,7 +15,6 @@ const plant = ref({
     miny: null,
     maxx: null,
     maxy: null,
-    parcelId: null
 })
 
 function createPlant() {
