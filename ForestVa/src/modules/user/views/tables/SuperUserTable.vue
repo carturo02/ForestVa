@@ -2,10 +2,10 @@
 import VTable from '@/components/VTable.vue';
 import Column from 'primevue/column';
 import InputText from 'primevue/inputtext';
-import CreateUser from '../modals/CreateUser.vue';
+import CreateSuperUser from '../modals/CreateSuperUser.vue';
 import { SuperUser } from '../../classes/SuperUser';
 
-const form = {component: CreateUser, header: 'modal.create.superuser'};
+const form = {component: CreateSuperUser, header: 'modal.create.superuser'};
 
 </script>
 

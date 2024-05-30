@@ -2,10 +2,10 @@
 import VTable from '@/components/VTable.vue';
 import Column from 'primevue/column';
 import InputText from 'primevue/inputtext';
-import CreateUser from '../modals/CreateUser.vue';
-import { Observer } from '../../classes/Observer.ts';
+import CreateObserver from '../modals/CreateObserver.vue';
+import { Observer } from '../../classes/Observer';
 
-const form = {component: CreateUser, header: 'modal.create.observer'};
+const form = {component: CreateObserver, header: 'modal.create.observer'};
 
 </script>
 

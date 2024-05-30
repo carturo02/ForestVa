@@ -4,14 +4,11 @@ import FloatLabel from 'primevue/floatlabel';
 import { useSendRequest } from '@/common/utils/useSendRequest';
 import Button from 'primevue/button'
 import { ref } from 'vue';
-import { useSession } from '@/common/site/useUser';
-
-const url = useSession().rol === 'superuser' ? 'Admins' : 'Observers';
 
 function createUser(event) {
     console.log(event);
     useSendRequest({
-        url: url,
+        url: 'Observers',
         method: 'POST',
         data: user.value,
     })
@@ -22,7 +19,6 @@ const user = ref({
     last_name: '',
     user_name: '',
     user_password: '',
-    parcelid: null,
 })
 </script>
 
