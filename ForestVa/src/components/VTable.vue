@@ -1,16 +1,19 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
-import Button from 'primevue/button';
+import Button from 'primevue/button'
 import useEvents from '@/common/utils/useEvents';
+import { ref } from 'vue';
+import { VueElement } from 'vue';
 
 const props = defineProps({
     controller: Object,
     cb: Function,
     form: {
-        type: Object,
-        required: true
+        type: {
+            component: VueElement,
+            header: String
+        }
     },
     dataKey: String,
     edition: {
@@ -22,11 +25,9 @@ const props = defineProps({
         default: true
     }
 });
-import html2pdf from 'html2pdf.js';
 
 const { response } = props.controller.getElements();
 const editingRows = ref(!props.edition);
-const tableRef = ref(null); 
 
 function create() {
     useEvents().dispatch('showDialog', props.form);
@@ -36,51 +37,25 @@ function create() {
 function edit(event){
     props.controller.edit(event.newData);
 }
-
-const exportarTablaAPdf = () => {
-    if (!tableRef.value || !tableRef.value.$el || !tableRef.value.$el.children.length) {
-        console.error("null.");
-        return;
-    }
-    const clone = tableRef.value.$el.cloneNode(true);
-    const buttons = clone.querySelectorAll('button');
-    buttons.forEach(btn => btn.parentNode.removeChild(btn));
-
-    const options = {
-        filename: "datos.pdf",
-        image: { type: 'jpeg', quality: 1 },
-        html2canvas: { scale: 1 },
-        jsPDF: { unit: 'mm', format: 'a3', orientation: 'portrait' },
-    };
-
-   
-    html2pdf(clone, options);
-};
 </script>
 
 <template>
     <div class="card">
         <DataTable 
-            ref="tableRef" 
-            v-model:editingRows="editingRows"
-            editMode="row"
-            :value="response"
-            stripedRows 
-            tableStyle="min-width: 70rem"
-            :dataKey="props.dataKey"
-            @row-edit-save="edit"
+        v-model:editingRows="editingRows"
+        editMode="row"
+        :value="response"
+        stripedRows 
+        tableStyle="min-width: 70rem"
+        :dataKey="props.dataKey"
+        @row-edit-save="edit"
         >
             <Column>
                 <template #header>
-                    <div class="button-container">
-                        <Button class="btn" @click="create">
-                            {{$t('table.create')}}
-                            <i class="icon ion-plus"></i>
-                        </Button>
-                        <div class="export_to_PDF" v-if="response && response.length > 0">
-                            <Button class="bt1" label="Exportar a PDF" @click="exportarTablaAPdf" :style="{ backgroundColor: 'red', 'border-radius': '10px', border: 'none'}"/>
-                        </div>
-                    </div>
+                    <Button class="btn" @click="create">
+                        {{$t('table.create')}}
+                        <i class="icon ion-plus"></i>
+                    </Button>
                 </template>
             </Column>
             <slot></slot>
@@ -96,7 +71,6 @@ const exportarTablaAPdf = () => {
     </div>
 </template>
 
-
 <style scoped>
 .card{
     align-items: center;
@@ -105,11 +79,5 @@ const exportarTablaAPdf = () => {
 
 .btn{
     border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.button-container {
-    display: flex;
-    flex-direction: column;
 }
 </style>
