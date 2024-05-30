@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
-import html2pdf from 'html2pdf.js';
+import html2pdf from 'html2pdf';
 
 const tableEx = ref(null);
 const isEditable = ref(false);

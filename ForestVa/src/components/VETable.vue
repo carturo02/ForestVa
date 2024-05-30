@@ -4,6 +4,7 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Button from 'primevue/button';
 import useEvents from '@/common/utils/useEvents';
+import html2pdf from 'html2pdf';
 
 const props = defineProps({
     controller: Object,
@@ -22,7 +23,6 @@ const props = defineProps({
         default: true
     }
 });
-import html2pdf from 'html2pdf.js';
 
 const { response } = props.controller.getElements();
 const editingRows = ref(!props.edition);
