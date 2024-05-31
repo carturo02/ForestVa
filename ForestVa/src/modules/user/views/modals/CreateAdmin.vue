@@ -12,6 +12,7 @@ function createUser(event) {
         method: 'POST',
         data: user.value,
     })*/
+    user.value.parcelid = Number(user.value.parcelid)
     Admin.createElement(user.value);
 }
 
@@ -20,7 +21,7 @@ const user = ref({
     last_name: '',
     user_name: '',
     user_password: '',
-    parcelid: null
+    parcelid: 0
 })
 </script>
 
