@@ -4,14 +4,15 @@ import FloatLabel from 'primevue/floatlabel';
 import { useSendRequest } from '@/common/utils/useSendRequest';
 import Button from 'primevue/button'
 import { ref } from 'vue';
+import { Observer } from '../../classes/Observer';
 
 function createUser(event) {
-    console.log(event);
-    useSendRequest({
+    /*useSendRequest({
         url: 'Observers',
         method: 'POST',
         data: user.value,
-    })
+    })*/
+    Observer.createElement(user.value)
 }
 
 const user = ref({

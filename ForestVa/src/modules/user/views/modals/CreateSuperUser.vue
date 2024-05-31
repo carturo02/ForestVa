@@ -4,14 +4,15 @@ import FloatLabel from 'primevue/floatlabel';
 import { useSendRequest } from '@/common/utils/useSendRequest';
 import Button from 'primevue/button'
 import { ref } from 'vue';
+import { SuperUser } from '../../classes/SuperUser';
 
 function createUser(event) {
-    console.log(event);
-    useSendRequest({
+    /*useSendRequest({
         url: 'Superusers',
         method: 'POST',
         data: user.value,
-    })
+    })*/
+    SuperUser.createElement(user.value);
 }
 
 const user = ref({
@@ -19,7 +20,6 @@ const user = ref({
     last_name: '',
     user_name: '',
     user_password: '',
-    parcelid: null,
 })
 </script>
 

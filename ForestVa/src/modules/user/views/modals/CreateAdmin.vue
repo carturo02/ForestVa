@@ -4,14 +4,15 @@ import FloatLabel from 'primevue/floatlabel';
 import { useSendRequest } from '@/common/utils/useSendRequest';
 import Button from 'primevue/button'
 import { ref } from 'vue';
+import { Admin } from '../../classes/Admin';
 
 function createUser(event) {
-    console.log(event);
-    useSendRequest({
+    /*useSendRequest({
         url: 'Admins',
         method: 'POST',
         data: user.value,
-    })
+    })*/
+    Admin.createElement(user.value);
 }
 
 const user = ref({
